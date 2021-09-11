@@ -37,7 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   datetime_picker_formfield: ^2.0.0
   
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 50fdbee5bee0f87de1d14c05fdb37062c5c0fdfc
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:mymed/View/addslip.dart';
 import 'package:get/get.dart';
 import 'package:mymed/View/homescreen.dart';
+=======
+import 'package:mymed/View/Initalsetup.dart';
+
+import 'package:mymed/View/Reconcile.dart';
+import 'package:get/get.dart';
+>>>>>>> 50fdbee5bee0f87de1d14c05fdb37062c5c0fdfc
 
 void main() {
   runApp(MyApp());
@@ -25,7 +32,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+<<<<<<< HEAD
       home: HomeScreen(),
+=======
+      home: RegistrationPage(),
+>>>>>>> 50fdbee5bee0f87de1d14c05fdb37062c5c0fdfc
     );
   }
 }
