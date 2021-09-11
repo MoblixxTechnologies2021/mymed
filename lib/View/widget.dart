@@ -1,20 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-
-Widget Names(
-  label,
-  hint,
-) {
-  return TextField(
-    decoration: InputDecoration(
-      
-      border: OutlineInputBorder(),
-      labelText: label,
-      hintText: hint,
-    ),
-  );
-=======
 import 'package:intl/intl.dart';
 import 'package:mymed/View/common/theme_helper.dart';
 
@@ -37,7 +21,6 @@ class Name extends StatelessWidget {
       decoration: ThemeHelper().textInputDecoration(hint, label),
     );
   }
->>>>>>> 50fdbee5bee0f87de1d14c05fdb37062c5c0fdfc
 }
 
 class DatePicker extends StatefulWidget {
