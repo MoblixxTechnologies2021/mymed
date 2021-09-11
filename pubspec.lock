@@ -81,15 +81,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
-  intl:
-    dependency: transitive
-    description:
-      name: intl
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.17.0"
-=======
   get:
     dependency: "direct main"
     description:
@@ -97,7 +88,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.3.8"
->>>>>>> 4c6e1f8f8688cf34051b7f466441e844cbafc472
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   matcher:
     dependency: transitive
     description:
@@ -182,8 +179,4 @@ packages:
     version: "2.1.0"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-<<<<<<< HEAD
   flutter: ">=2.0.0"
-=======
-  flutter: ">=1.24.0-6.0.pre"
->>>>>>> 4c6e1f8f8688cf34051b7f466441e844cbafc472
