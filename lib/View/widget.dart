@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
 
 Widget Names(
   label,
@@ -7,6 +7,7 @@ Widget Names(
 ) {
   return TextField(
     decoration: InputDecoration(
+      
       border: OutlineInputBorder(),
       labelText: label,
       hintText: hint,
@@ -38,7 +39,9 @@ class _DatePickerState extends State<DatePicker> {
       controller: dateController,
       decoration: InputDecoration(
           suffixIcon: Icon(Icons.arrow_drop_down),
-          border: OutlineInputBorder(),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
           labelText: "Date of Birth",
           hintText: 'Pick your Date'),
       onTap: () async {
