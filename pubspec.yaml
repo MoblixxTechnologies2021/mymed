@@ -38,10 +38,6 @@ dependencies:
   datetime_picker_formfield: ^2.0.0
   
   
-<<<<<<< HEAD
-
-=======
->>>>>>> 817e31b7e7cb58029f060ee965ceb6ec212c1e93
 
 dev_dependencies:
   flutter_test:
