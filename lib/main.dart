@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:mymed/View/addslip.dart';
-import 'package:mymed/View/homescreen.dart';
-=======
 import 'package:mymed/View/Initalsetup.dart';
 import 'package:mymed/View/uniqueID.dart';
 import 'package:mymed/View/Reconcile.dart';
 import 'package:get/get.dart';
->>>>>>> d450c90bbbebb55a17484be9eb39d4d2f10f6e00
 
 void main() {
   runApp(MyApp());
@@ -21,16 +16,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter emo',
       theme: ThemeData(
-<<<<<<< HEAD
-        primarySwatch: Colors.blue,
-      ),
-      home: RegistrationPage(),
-    );
-  }
-}
-
-
-=======
         // This is the theme of your application.
         // Try running your application with "flutter run". You'll see the
         // application has a blue toolbar. Then, without quitting the app, try
@@ -45,4 +30,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
->>>>>>> d450c90bbbebb55a17484be9eb39d4d2f10f6e00
