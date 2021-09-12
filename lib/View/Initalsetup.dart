@@ -163,11 +163,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        Stack(
-                          children: [],
-                        ),
+                        // Stack(
+                        //   children: [],
+                        // ),
                         SizedBox(
-                          height: 30,
+                          height: 120,
                         ),
                         Container(
                           child: Name(
