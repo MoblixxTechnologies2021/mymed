@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mymed/View/Initalsetup.dart';
-import 'package:mymed/View/uniqueID.dart';
+
 import 'package:mymed/View/Reconcile.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: UniqueID(),
+      home: RegistrationPage(),
     );
   }
 }
