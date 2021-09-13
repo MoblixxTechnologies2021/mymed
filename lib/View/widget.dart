@@ -1,4 +1,3 @@
-import 'package:firebase/firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mymed/View/common/theme_helper.dart';
@@ -32,31 +31,24 @@ class DatePicker extends StatefulWidget {
 }
 
 class _DatePickerState extends State<DatePicker> {
+  final dateController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-
-
-  // @override
-  // void dispose() {
-  //   // Clean up the controller when the widget is removed
-  //   dateController.dispose();
-  //   super.dispose();
+  void dispose() {
+    // Clean up the controller when the widget is removed
+    dateController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    var dateController;
     return TextField(
       readOnly: true,
       controller: dateController,
       decoration: InputDecoration(
           suffixIcon: Icon(Icons.arrow_drop_down),
           border: OutlineInputBorder(
-           // borderRadius: BorderRadius.circular(100),
+            borderRadius: BorderRadius.circular(100),
           ),
           labelText: "Date of Birth",
           hintText: 'Pick your Date'),
@@ -70,7 +62,7 @@ class _DatePickerState extends State<DatePicker> {
       },
     );
   }
-
+}
 
 // Widget Numbers(number) {
 //   return TextField(
@@ -115,10 +107,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         height: 1,
         //color: Colors.black45,
       ),
-
-    //color: Colors.white,
-
-
       onChanged: (String? newValue) {
         setState(() {
           dropdownValue = newValue!;
