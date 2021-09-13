@@ -1,83 +1,4 @@
-// import 'package:flutter/material.dart';
-// import 'package:mymed/View/widget.dart';
-
-// class GeneralInformation extends StatefulWidget {
-//   const GeneralInformation({Key? key}) : super(key: key);
-
-//   @override
-//   _GeneralInformationState createState() => _GeneralInformationState();
-// }
-
-// class _GeneralInformationState extends State<GeneralInformation> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.teal,
-//         title: Center(
-//           child: Text(
-//             "General Information",
-//             style: TextStyle(fontSize: 20, color: Colors.white),
-//           ),
-//         ),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(10),
-//         child: SingleChildScrollView(
-//           child: Column(
-//             children: [
-//               Names("First Name", "Enter Your Name"),
-//               SizedBox(
-//                 height: 5,
-//               ),
-//               Names("Last Name", "Enter Your Name"),
-//               SizedBox(
-//                 height: 5,
-//               ),
-//               Row(children: [
-//                 Expanded(child: Names("Gender", "Enter Your Gender")),
-//                 SizedBox(
-//                   width: 10,
-//                 ),
-//                 Expanded(child: DatePicker()),
-//               ]),
-//               SizedBox(
-//                 height: 10,
-//               ),
-//               Numbers("Enter Your Number"),
-//               SizedBox(
-//                 height: 10,
-//               ),
-//               Names("Address", "Enter Your Address"),
-//               SizedBox(
-//                 height: 10,
-//               ),
-//               Names("Doctor Name", "Enter Your DoctorName"),
-//               SizedBox(
-//                 height: 10,
-//               ),
-//               Numbers("Enter Your DoctorNumber"),
-//               SizedBox(
-//                 height: 10,
-//               ),
-//               Names("Pharmacy Name", "Enter Your PharmacyName"),
-//               SizedBox(
-//                 height: 10,
-//               ),
-//               Numbers("Enter Your PharmacyNumber"),
-//             ],
-//           ),
-//         ),
-//       ),
-//       floatingActionButton: FloatingActionButton.extended(
-//         backgroundColor: Colors.teal,
-//         onPressed: () {},
-//         icon: Icon(Icons.save),
-//         label: Text("Save"),
-//       ),
-//     );
-//   }
-// }
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -87,6 +8,8 @@ import 'package:mymed/View/common/HeaderWidget.dart';
 import 'package:mymed/View/common/theme_helper.dart';
 import 'package:mymed/View/homescreen.dart';
 import 'package:mymed/View/widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class RegistrationPage extends StatefulWidget {
   @override
@@ -109,6 +32,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final myDoctorNumberController = TextEditingController();
   final myPharmacyController = TextEditingController();
   final myPharmacyNumberController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -146,8 +70,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SizedBox(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SizedBox(
           child: Stack(
             children: [
               Container(
@@ -176,7 +100,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               hint: 'First Name',
                               label: 'Enter Your First Name',
                             ),
-                            decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                            decoration:
+                                ThemeHelper().inputBoxDecorationShaddow(),
                           ),
                           SizedBox(
                             height: 30,
@@ -221,7 +146,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 return null;
                               },
                             ),
-                            decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                            decoration:
+                                ThemeHelper().inputBoxDecorationShaddow(),
                           ),
                           SizedBox(height: 20.0),
                           Container(
@@ -247,7 +173,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 return null;
                               },
                             ),
-                            decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                            decoration:
+                                ThemeHelper().inputBoxDecorationShaddow(),
                           ),
                           SizedBox(height: 20.0),
                           Container(
@@ -273,7 +200,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 return null;
                               },
                             ),
-                            decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                            decoration:
+                                ThemeHelper().inputBoxDecorationShaddow(),
                           ),
                           SizedBox(
                             height: 20,
@@ -283,22 +211,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             builder: (state) {
                               return Column(
                                 children: <Widget>[
-                                  Row(
-                                    children: <Widget>[
-                                      Checkbox(
-                                          value: checkboxValue,
-                                          onChanged: (value) {
-                                            setState(() {
-                                              checkboxValue = value!;
-                                              state.didChange(value);
-                                            });
-                                          }),
-                                      Text(
-                                        "I accept all terms and conditions.",
-                                        style: TextStyle(color: Colors.grey),
-                                      ),
-                                    ],
-                                  ),
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
@@ -333,22 +245,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 child: Text(
                                   "Register".toUpperCase(),
                                   style: TextStyle(
-                                    fontSize: 21,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                   ),
                                 ),
                               ),
                               onPressed: () {
-                                Get.to(HomeScreen());
-                                // if (_formKey.currentState!.validate()) {
-                                //   Navigator.of(context).pushAndRemoveUntil(
-                                //       MaterialPageRoute(
-                                //           builder: (context) => ProfilePage()
-                                //       ),
-                                //           (Route<dynamic> route) => false
-                                //   );
-                                // }
+                                addAllDetails();
+                                //Get.to(HomeScreen());
                               },
                             ),
                           ),
@@ -365,25 +270,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
       ),
     );
   }
+
+  void addAllDetails() {
+    Map<String, dynamic> userData = {
+      "name": "${myFirstNameController.text}",
+    };
+
+    CollectionReference collectionReference =
+        FirebaseFirestore.instance.collection("UserPersonalData");
+    collectionReference.add(userData);
+  }
 }
-
-// class Name extends StatelessWidget {
-//   final String label;
-//   final String hint;
-//   const Name(
-//       {Key? key,
-//       required this.myFirstNameController,
-//       required this.hint,
-//       required this.label})
-//       : super(key: key);
-
-//   final TextEditingController myFirstNameController;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return TextFormField(
-//       controller: myFirstNameController,
-//       decoration: ThemeHelper().textInputDecoration(hint, label),
-//     );
-//   }
-// }
