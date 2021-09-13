@@ -9,7 +9,7 @@ class ReconcilScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar:
-            AppBar(backgroundColor: Colors.teal, title: Text('ReconcilScreen')),
+            AppBar(backgroundColor: Colors.grey, title: Text('ReconcilScreen')),
         body: StaggeredGridView.countBuilder(
           crossAxisCount: 2,
           itemCount: 5,
@@ -26,9 +26,9 @@ class ReconcilScreen extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(60),
-              bottomLeft: Radius.circular(60))),
-      color: Colors.teal.shade200,
+        bottomRight: Radius.circular(60),
+      )),
+      color: Colors.blue.shade200,
       elevation: 2,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -49,20 +49,6 @@ class ReconcilScreen extends StatelessWidget {
                     fit: BoxFit.fill,
                   ),
                 ),
-                // Positioned(
-                //   right: 0,
-                //   child: Obx(() => CircleAvatar(
-                //         backgroundColor: Colors.white,
-                //         child: IconButton(
-                //           icon: product.isFavorite.value
-                //               ? Icon(Icons.favorite_rounded)
-                //               : Icon(Icons.favorite_border),
-                //           onPressed: () {
-                //             product.isFavorite.toggle();
-                //           },
-                //         ),
-                //       )),
-                // )
               ],
             ),
             SizedBox(height: 8),
@@ -88,8 +74,16 @@ class ReconcilScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  endButtons("Slip", Colors.green),
-                  endButtons("Delete", Colors.red),
+                  Expanded(
+                    child: endButtons("Slip", Colors.green),
+                  ),
+                  SizedBox(
+                    height: 5,
+                    width: 5,
+                  ),
+                  Expanded(
+                    child: endButtons("Delete", Colors.red),
+                  )
                 ],
               ),
             ),
@@ -161,6 +155,7 @@ class ReconcilScreen extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
