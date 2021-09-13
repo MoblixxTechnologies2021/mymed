@@ -245,7 +245,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 child: Text(
                                   "Register".toUpperCase(),
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 21,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                   ),
