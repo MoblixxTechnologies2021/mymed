@@ -274,6 +274,7 @@ dateController.dispose();
 
   void addAllDetails() {
     Map<String, dynamic> userData = {
+
       "Firstname": "${myFirstNameController.text}",
       "Lastname": "${myLastNameController.text}",
       "Address": "${myAddressController.text}",
