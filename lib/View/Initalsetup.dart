@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:mymed/Controller/initialSetUpController.dart';
 import 'package:mymed/View/common/HeaderWidget.dart';
 import 'package:mymed/View/common/theme_helper.dart';
 import 'package:mymed/View/homescreen.dart';
@@ -32,6 +33,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final myDoctorNumberController = TextEditingController();
   final myPharmacyController = TextEditingController();
   final myPharmacyNumberController = TextEditingController();
+  InitialSetUpController setUpController = InitialSetUpController();
+  String dropdownValue = 'Male';
 
   @override
   void initState() {
@@ -41,7 +44,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     myFirstNameController.addListener;
     myLastNameController.addListener;
     myAddressController.addListener;
-dateController.addListener;
+    dateController.addListener;
 
     myMobileController.addListener;
     myDoctorController.addListener;
@@ -57,7 +60,7 @@ dateController.addListener;
     myFirstNameController.dispose();
     myLastNameController.dispose();
     myAddressController.dispose();
-dateController.dispose();
+    dateController.dispose();
     myMobileController.dispose();
     myDoctorController.dispose();
     myDoctorNumberController.dispose();
@@ -122,12 +125,12 @@ dateController.dispose();
                           Row(
                               //  mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Expanded(child: DatePicker()),
+                                Expanded(child: datePicker()),
                                 SizedBox(
                                   width: 50,
                                 ),
                                 Expanded(
-                                  child: MyStatefulWidget(),
+                                  child: dropdown(),
                                 ),
                               ]),
                           SizedBox(
@@ -253,7 +256,20 @@ dateController.dispose();
                                 ),
                               ),
                               onPressed: () {
-                                addAllDetails();
+                                var id =
+                                    new DateTime.now().millisecondsSinceEpoch;
+                                setUpController.addAllDetails(
+                                    id,
+                                    myFirstNameController.text,
+                                    myLastNameController.text,
+                                    myAddressController.text,
+                                    dateController.text,
+                                    myMobileController.text,
+                                    myDoctorController.text,
+                                    myDoctorNumberController.text,
+                                    myPharmacyController.text,
+                                    myPharmacyNumberController.text,
+                                    dropdownValue);
                                 //Get.to(HomeScreen());
                               },
                             ),
@@ -272,26 +288,58 @@ dateController.dispose();
     );
   }
 
-  void addAllDetails() {
-    Map<String, dynamic> userData = {
+  dropdown() {
+    return DropdownButton<String>(
+      value: dropdownValue,
+      icon: const Icon(
+        Icons.radio_button_checked,
+        color: Colors.black54,
+      ),
+      iconSize: 20,
+      elevation: 16,
+      style: const TextStyle(color: Colors.black),
+      underline: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+        height: 1,
+        //color: Colors.black45,
+      ),
+      onChanged: (String? newValue) {
+        setState(() {
+          dropdownValue = newValue!;
+        });
+      },
+      items: <String>[
+        'Female',
+        'Male',
+        'Other',
+      ].map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
+  }
 
-      "Firstname": "${myFirstNameController.text}",
-      "Lastname": "${myLastNameController.text}",
-      "Address": "${myAddressController.text}",
-     "Date Of Birth": "${dateController.value}",
-      //"Gender": "${}",
-      "Mobile Number": "${myMobileController.text}",
-      "Doctor Name": "${myDoctorController.text}",
-      "Doctor Mobile Number": "${myDoctorNumberController.text}",
-      "Phamracy Name": "${myPharmacyController.text}",
-      "Pharmacy Mobile Number": "${myPharmacyNumberController.text}",
-
-
-
-    };
-
-    CollectionReference collectionReference =
-        FirebaseFirestore.instance.collection("UserPersonalData");
-    collectionReference.add(userData);
+  datePicker() {
+    return TextField(
+      readOnly: true,
+      controller: dateController,
+      decoration: InputDecoration(
+          suffixIcon: Icon(Icons.arrow_drop_down),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
+          labelText: "Date of Birth",
+          hintText: 'Pick your Date'),
+      onTap: () async {
+        var date = await showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1900),
+            lastDate: DateTime(2300));
+        dateController.text = date.toString().substring(0, 10);
+      },
+    );
   }
 }
