@@ -26,7 +26,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final myFirstNameController = TextEditingController();
   final myLastNameController = TextEditingController();
   final myAddressController = TextEditingController();
-
+  final dateController = TextEditingController();
   final myMobileController = TextEditingController();
   final myDoctorController = TextEditingController();
   final myDoctorNumberController = TextEditingController();
@@ -41,6 +41,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     myFirstNameController.addListener;
     myLastNameController.addListener;
     myAddressController.addListener;
+dateController.addListener;
 
     myMobileController.addListener;
     myDoctorController.addListener;
@@ -56,7 +57,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     myFirstNameController.dispose();
     myLastNameController.dispose();
     myAddressController.dispose();
-
+dateController.dispose();
     myMobileController.dispose();
     myDoctorController.dispose();
     myDoctorNumberController.dispose();
@@ -273,7 +274,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   void addAllDetails() {
     Map<String, dynamic> userData = {
-      "name": "${myFirstNameController.text}",
+      "Firstname": "${myFirstNameController.text}",
+      "Lastname": "${myLastNameController.text}",
+      "Address": "${myAddressController.text}",
+     "Date Of Birth": "${dateController.value}",
+      //"Gender": "${}",
+      "Mobile Number": "${myMobileController.text}",
+      "Doctor Name": "${myDoctorController.text}",
+      "Doctor Mobile Number": "${myDoctorNumberController.text}",
+      "Phamracy Name": "${myPharmacyController.text}",
+      "Pharmacy Mobile Number": "${myPharmacyNumberController.text}",
+
+
+
     };
 
     CollectionReference collectionReference =
