@@ -48,7 +48,7 @@ class _DatePickerState extends State<DatePicker> {
       decoration: InputDecoration(
           suffixIcon: Icon(Icons.arrow_drop_down),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(100),
+           // borderRadius: BorderRadius.circular(100),
           ),
           labelText: "Date of Birth",
           hintText: 'Pick your Date'),
